@@ -1,4 +1,3 @@
-import Tokenizer from './Tokenizer';
 import Indexer from './Indexer';
 import { readDirectory, readFile, indexFile } from './utils';
 
