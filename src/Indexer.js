@@ -29,7 +29,9 @@ class Indexer {
             prop_mot !== "nb_occurences") {
             let doc = mot[prop_doc];
             let ponderation = doc.nb_occurences * Math.log(this.nbDocuments / (Object.keys(mot).length-1));
-            Object.assign(doc, { ponderation: ponderation });
+            if(ponderation !== 0) {
+              Object.assign(doc, { ponderation: ponderation });
+            }
           }
         }
       }
@@ -48,7 +50,7 @@ class Indexer {
   }
 
   ponderationMotCarre(motArray, documentName) {
-    var ponderationCarre = 0;
+    let ponderationCarre = 0;
     for(let mot in motArray) {
       let mot_label = motArray[mot];
       if(this.Mots[mot_label] && this.Mots[mot_label][documentName]) {

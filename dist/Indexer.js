@@ -43,7 +43,9 @@ var Indexer = (function () {
             if (mot.hasOwnProperty(prop_doc) && prop_mot !== "nb_occurences") {
               var doc = mot[prop_doc];
               var ponderation = doc.nb_occurences * Math.log(this.nbDocuments / (Object.keys(mot).length - 1));
-              Object.assign(doc, { ponderation: ponderation });
+              if (ponderation !== 0) {
+                Object.assign(doc, { ponderation: ponderation });
+              }
             }
           }
         }

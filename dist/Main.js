@@ -12,7 +12,9 @@ var _Requeter2 = _interopRequireDefault(_Requeter);
 
 var _Utils = require('./Utils');
 
+// Dossier avec tous les documents
 var filename = './documents/';
+// Charset des fichiers à lire
 var charset = 'utf8';
 
 // On list les fichiers
@@ -25,6 +27,12 @@ files.map(function (file) {
   (0, _Utils.indexFile)(file_content, indexer, file);
 });
 
+// On calcul les pondération dans l'indexer
 indexer.calculerPonderation();
-var requeter = new _Requeter2['default']("Les sanglots longs", indexer);
-requeter.resultatRequest();
+// On instancie l'objet de traitement des requêtes
+var requeter = new _Requeter2['default'](process.argv.slice(2), indexer);
+// Calcul des résultats de la requête
+var results = requeter.resultatRequest();
+// Affichage des résultats dans la console
+console.log(results);
+// console.log(indexer.Mots);

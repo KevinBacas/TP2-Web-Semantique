@@ -2,7 +2,9 @@ import Indexer from './Indexer';
 import Requeter from './Requeter';
 import { readDirectory, readFile, indexFile } from './Utils';
 
+// Dossier avec tous les documents
 const filename = './documents/';
+// Charset des fichiers à lire
 const charset = 'utf8';
 
 // On list les fichiers
@@ -15,6 +17,12 @@ files.map((file) => {
   indexFile(file_content, indexer, file);
 });
 
+// On calcul les pondération dans l'indexer
 indexer.calculerPonderation();
-let requeter = new Requeter("Les sanglots longs", indexer);
-requeter.resultatRequest();
+// On instancie l'objet de traitement des requêtes
+let requeter = new Requeter(process.argv.slice(2), indexer);
+// Calcul des résultats de la requête
+let results = requeter.resultatRequest();
+// Affichage des résultats dans la console
+console.log(results);
+// console.log(indexer.Mots);

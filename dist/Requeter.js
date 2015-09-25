@@ -18,10 +18,7 @@ var Requeter = (function () {
 	function Requeter(request, indexer) {
 		_classCallCheck(this, Requeter);
 
-		//TODO: Supprimer le traitement de chaine
-		this.requestArray = request.toString().split(/\s+/).map(function (mot) {
-			return mot.toLowerCase();
-		});
+		this.requestArray = request;
 		this.indexer = indexer;
 	}
 
@@ -38,7 +35,10 @@ var Requeter = (function () {
 					var doc_name = docTable[doc];
 					numerateur = this.indexer.ponderationMot(this.requestArray, doc_name);
 					denominateur = this.indexer.ponderationMotCarre(this.requestArray, doc_name);
-					res.push(isNaN(numerateur / denominateur) ? 0 : numerateur / denominateur);
+					res.push({
+						document: doc_name,
+						ponderation: isNaN(numerateur / denominateur) ? 0 : numerateur / denominateur
+					});
 				}
 			}
 			return res;
@@ -46,19 +46,19 @@ var Requeter = (function () {
 	}, {
 		key: 'resultatRequest',
 		value: function resultatRequest() {
+			// Calcul des coefficients de la requête
 			var results = this.calculCoefficient();
-			var documents = this.indexer.getDocumentArray();
+			// Création d'une liste ordonnée
 			var res = new _immutable2['default'].OrderedMap();
-			console.log(res);
-			for (var i = 0; i < results.length; ++i) {
-				res = res.set(results[i], {
-					ponderation: results[i],
-					document: documents[i]
-				});
-			}
+			// Ajout des entrées dans la liste
+			results.map(function (doc) {
+				return res = res.set(doc.ponderation, doc);
+			});
+			// Tri sur la liste
 			res = res.sortBy(function (doc) {
 				return doc.ponderation;
 			});
+			// Conversion des résultat en objet javascript et renvoie de l'objet
 			return res.toJS();
 		}
 	}]);

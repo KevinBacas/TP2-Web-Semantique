@@ -2,8 +2,7 @@ import Immutable from 'immutable';
 
 class Requeter {
 	constructor(request, indexer) {
-		//TODO: Supprimer le traitement de chaine
-		this.requestArray = request.toString().split(/\s+/).map((mot) => mot.toLowerCase());
+		this.requestArray = request;
 		this.indexer = indexer;
 	}
 
@@ -18,24 +17,25 @@ class Requeter {
 			let doc_name = docTable[doc];
 			numerateur = this.indexer.ponderationMot(this.requestArray, doc_name);
 			denominateur = this.indexer.ponderationMotCarre(this.requestArray, doc_name);
-			res.push(isNaN(numerateur/denominateur) ? 0 : numerateur/denominateur);
+			res.push({
+				document: doc_name,
+				ponderation: isNaN(numerateur/denominateur) ? 0 : numerateur/denominateur
+				});
 		  }
 		}
 		return res;
 	}
 
 	resultatRequest() {
+		// Calcul des coefficients de la requête
 		let results = this.calculCoefficient();
-		let documents = this.indexer.getDocumentArray();
+		// Création d'une liste ordonnée
 		let res = new Immutable.OrderedMap();
-		console.log(res);
-		for(let i = 0 ; i < results.length ; ++i) {
-			res = res.set(results[i], {
-				ponderation: results[i],
-				document: documents[i]
-			});
-		}
+		// Ajout des entrées dans la liste
+		results.map((doc) => res = res.set(doc.ponderation, doc));
+		// Tri sur la liste
 		res = res.sortBy((doc) => doc.ponderation);
+		// Conversion des résultat en objet javascript et renvoie de l'objet
 		return res.toJS();
 	}
 }
