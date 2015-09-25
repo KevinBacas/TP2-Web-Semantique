@@ -10,7 +10,8 @@
   },
   "author": "",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
+    "immutable": "^3.7.5",
     "babel": "^5.8.23"
   }
 }
