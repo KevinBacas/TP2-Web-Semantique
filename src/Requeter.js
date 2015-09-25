@@ -14,12 +14,16 @@ class Requeter {
 		var denominateur = 0;
 		for(var doc in docTable) {
 		  if(docTable.hasOwnProperty(doc)) {
-			let doc_name = docTable[doc];
-			numerateur = this.indexer.ponderationMot(this.requestArray, doc_name);
-			denominateur = this.indexer.ponderationMotCarre(this.requestArray, doc_name);
-			res.push({
-				document: doc_name,
-				ponderation: isNaN(numerateur/denominateur) ? 0 : numerateur/denominateur
+				// On récupère le nom du fichier
+				let doc_name = docTable[doc];
+				// Calcul du numérateur
+				numerateur = this.indexer.ponderationMot(this.requestArray, doc_name);
+				// Calcul du dénominateur
+				denominateur = Math.sqrt(this.indexer.ponderationMotCarre(this.requestArray, doc_name));
+				// On ajoute le résultat à la liste
+				res.push({
+					document: doc_name,
+					ponderation: isNaN(numerateur/denominateur) ? 0 : numerateur/denominateur
 				});
 		  }
 		}

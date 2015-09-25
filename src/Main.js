@@ -20,7 +20,8 @@ files.map((file) => {
 // On calcul les pondération dans l'indexer
 indexer.calculerPonderation();
 // On instancie l'objet de traitement des requêtes
-let requeter = new Requeter(process.argv.slice(2), indexer);
+let request = process.argv.slice(2).map((mot) => mot.toLowerCase());
+let requeter = new Requeter(request, indexer);
 // Calcul des résultats de la requête
 let results = requeter.resultatRequest();
 // Affichage des résultats dans la console

@@ -30,7 +30,10 @@ files.map(function (file) {
 // On calcul les pondération dans l'indexer
 indexer.calculerPonderation();
 // On instancie l'objet de traitement des requêtes
-var requeter = new _Requeter2['default'](process.argv.slice(2), indexer);
+var request = process.argv.slice(2).map(function (mot) {
+  return mot.toLowerCase();
+});
+var requeter = new _Requeter2['default'](request, indexer);
 // Calcul des résultats de la requête
 var results = requeter.resultatRequest();
 // Affichage des résultats dans la console
