@@ -23,14 +23,15 @@ var Requeter = (function () {
 		key: "calculCoefficient",
 		value: function calculCoefficient() {
 			// C(v,r) = Somme (pondération des mot) / Racine(Somme (pondération des mot)²
-			var docTable = this.indexer.getDocumentArray;
+			var docTable = this.indexer.getDocumentArray();
 			var res = [];
 			var numerateur = 0;
 			var denominateur = 0;
 			for (var doc in docTable) {
 				if (docTable.hasOwnProperty(doc)) {
-					numerateur = this.indexer.ponderation(this.requestArray, doc);
-					denominateur = this.indexer.ponderationCarre(this.requestArray, doc);
+					var doc_name = docTable[doc];
+					numerateur = this.indexer.ponderationMot(this.requestArray, doc_name);
+					denominateur = this.indexer.ponderationMotCarre(this.requestArray, doc_name);
 					res.push(numerateur / denominateur);
 				}
 			}
@@ -40,6 +41,10 @@ var Requeter = (function () {
 		key: "resultatRequest",
 		value: function resultatRequest() {
 			//TODO: Renvoyer la liste des documents par ordre de pondération
+			var results = this.calculCoefficient();
+			var documents = this.indexer.getDocumentArray();
+			console.log("results", results);
+			console.log("documents", documents);
 			//TODO: Renvoyer la pondération avec la liste des documents
 		}
 	}]);

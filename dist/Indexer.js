@@ -54,8 +54,9 @@ var Indexer = (function () {
     value: function ponderationMot(motArray, documentName) {
       var ponderation = 0;
       for (var mot in motArray) {
-        if (this.Mots[mot] && this.Mots[mot][documentName]) {
-          ponderation += this.Mots[mot][documentName].ponderation;
+        var mot_label = motArray[mot];
+        if (this.Mots[mot_label] && this.Mots[mot_label][documentName]) {
+          ponderation += this.Mots[mot_label][documentName].ponderation;
         }
       }
       return ponderation;
@@ -65,8 +66,9 @@ var Indexer = (function () {
     value: function ponderationMotCarre(motArray, documentName) {
       var ponderationCarre = 0;
       for (var mot in motArray) {
-        if (this.Mots[mot] && this.Mots[mot][documentName]) {
-          ponderationCarre += Math.pow(this.Mots[mot][documentName].ponderation, 2);
+        var mot_label = motArray[mot];
+        if (this.Mots[mot_label] && this.Mots[mot_label][documentName]) {
+          ponderationCarre += Math.pow(this.Mots[mot_label][documentName].ponderation, 2);
         }
       }
       return ponderationCarre;

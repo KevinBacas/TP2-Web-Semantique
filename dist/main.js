@@ -6,6 +6,10 @@ var _Indexer = require('./Indexer');
 
 var _Indexer2 = _interopRequireDefault(_Indexer);
 
+var _Requeter = require('./Requeter');
+
+var _Requeter2 = _interopRequireDefault(_Requeter);
+
 var _utils = require('./utils');
 
 var filename = './documents/';
@@ -22,3 +26,5 @@ files.map(function (file) {
 });
 
 indexer.calculerPonderation();
+var requeter = new _Requeter2['default']("Les sanglots longs", indexer);
+requeter.resultatRequest();
