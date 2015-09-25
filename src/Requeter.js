@@ -1,3 +1,5 @@
+import Immutable from 'immutable';
+
 class Requeter {
 	constructor(request, indexer) {
 		//TODO: Supprimer le traitement de chaine
@@ -16,19 +18,25 @@ class Requeter {
 			let doc_name = docTable[doc];
 			numerateur = this.indexer.ponderationMot(this.requestArray, doc_name);
 			denominateur = this.indexer.ponderationMotCarre(this.requestArray, doc_name);
-			res.push(numerateur/denominateur);
+			res.push(isNaN(numerateur/denominateur) ? 0 : numerateur/denominateur);
 		  }
 		}
 		return res;
 	}
 
 	resultatRequest() {
-		//TODO: Renvoyer la liste des documents par ordre de pondération
 		let results = this.calculCoefficient();
 		let documents = this.indexer.getDocumentArray();
-		console.log("results", results);
-		console.log("documents", documents);
-		//TODO: Renvoyer la pondération avec la liste des documents
+		let res = new Immutable.OrderedMap();
+		console.log(res);
+		for(let i = 0 ; i < results.length ; ++i) {
+			res = res.set(results[i], {
+				ponderation: results[i],
+				document: documents[i]
+			});
+		}
+		res = res.sortBy((doc) => doc.ponderation);
+		return res.toJS();
 	}
 }
 
