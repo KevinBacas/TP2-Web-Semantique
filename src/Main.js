@@ -1,6 +1,6 @@
 import Indexer from './Indexer';
 import Requeter from './Requeter';
-import { readDirectory, readFile, indexFile } from './utils';
+import { readDirectory, readFile, indexFile } from './Utils';
 
 const filename = './documents/';
 const charset = 'utf8';

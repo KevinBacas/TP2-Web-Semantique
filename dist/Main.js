@@ -10,19 +10,19 @@ var _Requeter = require('./Requeter');
 
 var _Requeter2 = _interopRequireDefault(_Requeter);
 
-var _utils = require('./utils');
+var _Utils = require('./Utils');
 
 var filename = './documents/';
 var charset = 'utf8';
 
 // On list les fichiers
-var files = (0, _utils.readDirectory)(filename);
+var files = (0, _Utils.readDirectory)(filename);
 // Création de l'indexer
 var indexer = new _Indexer2['default'](files, files.length);
 // Pour chaque ficher on le scan puis on le parse pour on l'index
 files.map(function (file) {
-  var file_content = (0, _utils.readFile)(filename + file, charset);
-  (0, _utils.indexFile)(file_content, indexer, file);
+  var file_content = (0, _Utils.readFile)(filename + file, charset);
+  (0, _Utils.indexFile)(file_content, indexer, file);
 });
 
 indexer.calculerPonderation();

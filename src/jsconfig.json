@@ -5,8 +5,8 @@
     },
 	"files": [
 		"Indexer.js",
-        "main.js",
-        "Requeter.js",
-        "utils.js"
+    "Main.js",
+    "Requeter.js",
+    "Utils.js"
 	]
 }
