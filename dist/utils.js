@@ -14,7 +14,7 @@ var _fs = require('fs');
 var _fs2 = _interopRequireDefault(_fs);
 
 function readDirectory(pathname) {
-    return _fs2['default'].readdirSync('./documents/');
+    return _fs2['default'].readdirSync(pathname);
 }
 
 function readFile(pathname) {
