@@ -20,27 +20,28 @@ class Indexer {
   }
 
   calculerPonderation() {
-      // Nombre_oc_doc * log(nombre_doc / nombre_doc_mot)
-      for (var prop_mot in this.Mots) {
-          if (this.Mots.hasOwnProperty(prop_mot)) {
-              let mot = this.Mots[prop_mot];
-              for(var prop_doc in mot) {
-                  if(mot.hasOwnProperty(prop_doc) &&
-                    prop_mot !== "nb_occurences") {
-                    let doc = mot[prop_doc];
-                    let ponderation = doc.nb_occurences * Math.log(this.nbDocuments / (Object.keys(mot).length-1));
-                    Object.assign(doc, { ponderation: ponderation });
-                  }
-              }
+    // Nombre_oc_doc * log(nombre_doc / nombre_doc_mot)
+    for (var prop_mot in this.Mots) {
+      if (this.Mots.hasOwnProperty(prop_mot)) {
+        let mot = this.Mots[prop_mot];
+        for(var prop_doc in mot) {
+          if(mot.hasOwnProperty(prop_doc) &&
+            prop_mot !== "nb_occurences") {
+            let doc = mot[prop_doc];
+            let ponderation = doc.nb_occurences * Math.log(this.nbDocuments / (Object.keys(mot).length-1));
+            Object.assign(doc, { ponderation: ponderation });
           }
+        }
       }
+    }
   }
 
   ponderationMot(motArray, documentName) {
     var ponderation = 0;
     for(let mot in motArray) {
-      if(this.Mots[mot] && this.Mots[mot][documentName]) {
-        ponderation += this.Mots[mot][documentName].ponderation;
+      let mot_label = motArray[mot];
+      if(this.Mots[mot_label] && this.Mots[mot_label][documentName]) {
+        ponderation += this.Mots[mot_label][documentName].ponderation;
       }
     }
     return ponderation;
@@ -49,8 +50,9 @@ class Indexer {
   ponderationMotCarre(motArray, documentName) {
     var ponderationCarre = 0;
     for(let mot in motArray) {
-      if(this.Mots[mot] && this.Mots[mot][documentName]) {
-        ponderationCarre += Math.pow(this.Mots[mot][documentName].ponderation, 2);
+      let mot_label = motArray[mot];
+      if(this.Mots[mot_label] && this.Mots[mot_label][documentName]) {
+        ponderationCarre += Math.pow(this.Mots[mot_label][documentName].ponderation, 2);
       }
     }
     return ponderationCarre;
