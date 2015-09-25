@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 export function readDirectory(pathname) {
-    return fs.readdirSync('./documents/');
+    return fs.readdirSync(pathname);
 }
 
 export function readFile(pathname, ...options) {

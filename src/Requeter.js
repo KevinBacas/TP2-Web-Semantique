@@ -1,5 +1,6 @@
 class Requeter {
 	constructor(request, indexer) {
+		//TODO: Supprimer le traitement de chaine
 		this.requestArray = request.toString().split(/\s+/).map((mot) => mot.toLowerCase());
 		this.indexer = indexer;
 	}
@@ -15,7 +16,7 @@ class Requeter {
 				numerateur = this.indexer.ponderation(this.requestArray, doc);
 				denominateur = this.indexer.ponderationCarre(this.requestArray, doc);
 				res.push(numerateur/denominateur);
-			} 
+			}
 		}
 		return res;
 	}
