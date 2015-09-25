@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs"
+    },
+	"files": [
+		"Indexer.js",
+        "main.js",
+        "Requeter.js",
+        "utils.js"
+	]
+}
