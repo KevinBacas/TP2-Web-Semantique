@@ -25,5 +25,10 @@ let requeter = new Requeter(request, indexer);
 // Calcul des résultats de la requête
 let results = requeter.resultatRequest();
 // Affichage des résultats dans la console
-console.log(results);
+for (var result in results) {
+  if (results.hasOwnProperty(result)) {
+    let result_obj = results[result];
+    console.log(result_obj.document, result_obj.ponderation);
+  }
+}
 // console.log(indexer.Mots);
