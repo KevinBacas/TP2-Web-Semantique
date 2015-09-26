@@ -39,6 +39,7 @@ class Requeter {
 		results.map((doc) => res = res.set(doc.document, doc));
 		// Tri sur la liste
 		res = res.sortBy((doc) => doc.ponderation);
+		res = res.reverse();
 		// Conversion des résultat en objet javascript et renvoie de l'objet
 		return res.toJS();
 	}

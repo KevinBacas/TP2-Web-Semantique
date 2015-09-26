@@ -62,6 +62,7 @@ var Requeter = (function () {
 			res = res.sortBy(function (doc) {
 				return doc.ponderation;
 			});
+			res = res.reverse();
 			// Conversion des résultat en objet javascript et renvoie de l'objet
 			return res.toJS();
 		}
