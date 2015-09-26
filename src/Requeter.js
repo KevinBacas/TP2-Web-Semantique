@@ -8,11 +8,11 @@ class Requeter {
 
 	calculCoefficient() {
 		// C(v,r) = Somme (pondération des mot) / Racine(Somme (pondération des mot)²
-		var docTable = this.indexer.getDocumentArray();
-		var res = [];
-		var numerateur = 0;
-		var denominateur = 0;
-		for(var doc in docTable) {
+		let docTable = this.indexer.getDocumentArray();
+		let res = [];
+		let numerateur = 0;
+		let denominateur = 0;
+		for(let doc in docTable) {
 		  if(docTable.hasOwnProperty(doc)) {
 				// On récupère le nom du fichier
 				let doc_name = docTable[doc];
