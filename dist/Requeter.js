@@ -56,7 +56,7 @@ var Requeter = (function () {
 			var res = new _immutable2['default'].OrderedMap();
 			// Ajout des entrées dans la liste
 			results.map(function (doc) {
-				return res = res.set(doc.ponderation, doc);
+				return res = res.set(doc.document, doc);
 			});
 			// Tri sur la liste
 			res = res.sortBy(function (doc) {

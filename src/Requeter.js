@@ -36,7 +36,7 @@ class Requeter {
 		// Création d'une liste ordonnée
 		let res = new Immutable.OrderedMap();
 		// Ajout des entrées dans la liste
-		results.map((doc) => res = res.set(doc.ponderation, doc));
+		results.map((doc) => res = res.set(doc.document, doc));
 		// Tri sur la liste
 		res = res.sortBy((doc) => doc.ponderation);
 		// Conversion des résultat en objet javascript et renvoie de l'objet
