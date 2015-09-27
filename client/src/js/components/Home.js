@@ -6,8 +6,9 @@ import DocumentStore from '../stores/DocumentStore';
 export default class Home extends React.Component {
 
   constructor() {
+    super();
     this.state = {
-      documents = {}
+      documents: {}
     }
   }
 
@@ -22,9 +23,7 @@ export default class Home extends React.Component {
   }
 
   conponentWillUnmount() {
-    this.setState(
-      document = {}
-    );
+    this.setState({});
   }
 
   componentDidMount() {
