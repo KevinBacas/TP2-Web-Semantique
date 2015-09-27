@@ -1,7 +1,7 @@
 
 var DocumentStore = {
 
-  state = {
+  state: {
     documents: [],
     content: {}
   },
