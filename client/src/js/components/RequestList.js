@@ -28,18 +28,36 @@ export default class RequestList extends React.Component {
     if(this.props.list !== false) {
       RequestNode = this.props.list.map(function(doc) {
         return (
-          <div
+          <tr
             className="RequestList"
             onClick={this.handleClick} >
-            {doc.document}
-          </div>
+            <th> {doc.document} </th>
+            <th>{doc.ponderation}</th>
+          </tr>
         )
       }.bind(this));
     }
+    var tableInstance = (
+      <table className="table" >
+        <thead>
+          <tr>
+            <th>Document Name</th>
+            <th>Ponderation </th>
+          </tr>
+        </thead>
+        <tbody>
+          {RequestNode}
+        </tbody>
+      </table>
+    );
     return (
       <div style={Style} >
-        {RequestNode}
-      </div>
+        {this.props.list !== false ? (
+          {tableInstance}
+          ) : (
+          {RequestNode}
+          )}
+        </div>
     )
   }
 

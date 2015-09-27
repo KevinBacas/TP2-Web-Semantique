@@ -4,9 +4,9 @@ import {Link, RouteHandler} from 'react-router';
 var App = React.createClass({
   render: function() {
     return (
-      <div className="app" >
-        <h1>Search Engine</h1>
-        <RouteHandler />
+      <div className="container" >
+          <h1 className="text-center" >Search Engine</h1>
+          <RouteHandler />
       </div>
     );
   }
