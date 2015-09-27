@@ -13,15 +13,25 @@ var DocumentActions = {
         DocumentStore.StoreDocuments(data);
       }.bind(this),
       error: function(xhr, status, err) {
-        console.error('/request', status, err.toString());
+        console.error('/request/', status, err.toString());
       }.bind(this)
     });
   },
 
-  fetchContent(documentId) {
+  fetchContent(documentName) {
     var content = {}
-    console.log('action', 'fetchContent : ' + documentId);
-    DocumentStore.StoreContent(content);
+    console.log('action', 'fetchContent : ' + documentName);
+    $.ajax({
+      url: '/documents/' + documentName,
+      dataType: 'json',
+      type: 'GET',
+      success: function(data) {
+        DocumentStore.StoreContent(data);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error('/documents/', status, err.toString());
+      }.bind(this)
+    });
   }
 
 };
