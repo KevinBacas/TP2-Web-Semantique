@@ -8,7 +8,7 @@ export default class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      documents: {}
+      documents: false
     }
   }
 
@@ -20,7 +20,15 @@ export default class Home extends React.Component {
   }
 
   onChange() {
-    let documents = DocumentStore.getDocuments();
+    let doc= DocumentStore.getDocuments();
+    if(doc === []) {
+      doc = false;
+    }
+    console.log('Home, onChange');
+    console.log(doc);
+    this.setState({
+      documents: doc
+    });
   }
 
   conponentWillUnmount() {
@@ -28,7 +36,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    DocumentStore.onChange = this.onChange;
+    DocumentStore.onChange = this.onChange.bind(this);
   }
 
   render() {
