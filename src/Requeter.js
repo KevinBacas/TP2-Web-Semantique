@@ -8,11 +8,11 @@ class Requeter {
 
 	calculCoefficient() {
 		// C(v,r) = Somme (pondération des mot) / Racine(Somme (pondération des mot)²
-		var docTable = this.indexer.getDocumentArray();
-		var res = [];
-		var numerateur = 0;
-		var denominateur = 0;
-		for(var doc in docTable) {
+		let docTable = this.indexer.getDocumentArray();
+		let res = [];
+		let numerateur = 0;
+		let denominateur = 0;
+		for(let doc in docTable) {
 		  if(docTable.hasOwnProperty(doc)) {
 				// On récupère le nom du fichier
 				let doc_name = docTable[doc];
@@ -36,9 +36,10 @@ class Requeter {
 		// Création d'une liste ordonnée
 		let res = new Immutable.OrderedMap();
 		// Ajout des entrées dans la liste
-		results.map((doc) => res = res.set(doc.ponderation, doc));
+		results.map((doc) => res = res.set(doc.document, doc));
 		// Tri sur la liste
 		res = res.sortBy((doc) => doc.ponderation);
+		res = res.reverse();
 		// Conversion des résultat en objet javascript et renvoie de l'objet
 		return res.toJS();
 	}

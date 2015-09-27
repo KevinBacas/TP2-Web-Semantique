@@ -21,10 +21,10 @@ class Indexer {
 
   calculerPonderation() {
     // Nombre_oc_doc * log(nombre_doc / nombre_doc_mot)
-    for (var prop_mot in this.Mots) {
+    for (let prop_mot in this.Mots) {
       if (this.Mots.hasOwnProperty(prop_mot)) {
         let mot = this.Mots[prop_mot];
-        for(var prop_doc in mot) {
+        for(let prop_doc in mot) {
           if(mot.hasOwnProperty(prop_doc) &&
             prop_mot !== "nb_occurences") {
             let doc = mot[prop_doc];
@@ -39,7 +39,7 @@ class Indexer {
   }
 
   ponderationMot(motArray, documentName) {
-    var ponderation = 0;
+    let ponderation = 0;
     for(let mot in motArray) {
       let mot_label = motArray[mot];
       if(this.Mots[mot_label] && this.Mots[mot_label][documentName]) {
