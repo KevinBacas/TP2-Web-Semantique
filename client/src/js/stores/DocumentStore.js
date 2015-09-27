@@ -28,4 +28,4 @@ var DocumentStore = {
 
 }
 
-export default DocumentActions;
+export default DocumentStore;
