@@ -4,7 +4,6 @@ import $ from 'jquery';
 var DocumentActions = {
 
   fetchDocuments(request) {
-    console.log('action', 'fetchDocument : ' + request);
     $.ajax({
       url: '/request/?req=' + request,
       dataType: 'json',
@@ -19,11 +18,9 @@ var DocumentActions = {
   },
 
   fetchContent(documentName) {
-    var content = {}
-    console.log('action', 'fetchContent : ' + documentName);
     $.ajax({
       url: '/documents/' + documentName,
-      dataType: 'json',
+      dataType: 'text',
       type: 'GET',
       success: function(data) {
         DocumentStore.StoreContent(data);

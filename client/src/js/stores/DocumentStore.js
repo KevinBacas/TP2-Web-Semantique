@@ -7,15 +7,13 @@ var DocumentStore = {
   },
 
   StoreDocuments(doc) {
-    console.log('DocumentStore', 'StoreDocuments : ' + doc);
     this.state.documents = doc;
-    console.log(this.state.documents);
     this.onChange();
   },
 
   StoreContent(content) {
-    console.log('DocumentStore', 'StoreContent : ' + content);
     this.state.content = content;
+    this.onChangeContent();
   },
 
   getDocuments() {

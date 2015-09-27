@@ -8,8 +8,6 @@ export default class RequestList extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log('requestList, handleClick', e.target.value);
-    console.log(e.target.textContent);
     DocumentActions.fetchContent(e.target.textContent);
   }
 
@@ -27,7 +25,6 @@ export default class RequestList extends React.Component {
       fontFamily: 'Arial',
       fontSize: '20'
     };
-    console.log('requestList, render', this.props.list);
     if(this.props.list !== false) {
       RequestNode = this.props.list.map(function(doc) {
         return (

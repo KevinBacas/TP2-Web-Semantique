@@ -15,7 +15,6 @@ export default class Home extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let request = document.getElementById('request').value;
-    console.log('Home, handleSubmit', request);
     DocumentActions.fetchDocuments(request);
   }
 
@@ -24,8 +23,6 @@ export default class Home extends React.Component {
     if(doc === []) {
       doc = false;
     }
-    console.log('Home, onChange');
-    console.log(doc);
     this.setState({
       documents: doc
     });

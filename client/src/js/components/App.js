@@ -5,7 +5,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="app" >
-        <h1>OUIOUI</h1>
+        <h1>Search Engine</h1>
         <RouteHandler />
       </div>
     );
