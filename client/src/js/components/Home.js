@@ -14,8 +14,9 @@ export default class Home extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target.value);
-    DocumentActions.fetchDocuments(e.target.value);
+    let request = document.getElementById('request').value;
+    console.log('Home, handleSubmit', request);
+    DocumentActions.fetchDocuments(request);
   }
 
   onChange() {

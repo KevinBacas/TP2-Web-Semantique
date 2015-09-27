@@ -4,12 +4,14 @@ export default class RequestList extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log(e.target.value);
+    console.log('requestList, handleClick', e.target.value);
   }
 
   render() {
     var RequestNode = "";
-    if(this.props.list) {
+    console.log('requestList, render', this.props.list);
+    /*
+    if(this.props.list !== undefined) {
       RequestNode = this.props.list.map(function(doc) {
         <div
           className="RequestList"
@@ -18,6 +20,7 @@ export default class RequestList extends React.Component {
         </div>
       });
     }
+    */
     return (
       <div>
         {RequestNode}

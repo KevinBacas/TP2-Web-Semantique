@@ -5,11 +5,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="app" >
-        <ul>
-          <li><Link to="/" >Home</Link></li>
-          <li><Link to="user" >UserPage</Link></li>
-          <li><Link to="about" >About</Link></li>
-        </ul>
+        <h1>OUIOUI</h1>
         <RouteHandler />
       </div>
     );
