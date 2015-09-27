@@ -1,11 +1,21 @@
 import DocumentStore from '../stores/DocumentStore';
+import $ from 'jquery';
 
 var DocumentActions = {
 
   fetchDocuments(request) {
-    var documents = [];
     console.log('action', 'fetchDocument : ' + request);
-    DocumentStore.StoreDocuments(documents);
+    $.ajax({
+      url: '/request/?req=' + request,
+      dataType: 'json',
+      type: 'GET',
+      success: function(data) {
+        DocumentStore.StoreDocuments(data);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error('/request', status, err.toString());
+      }.bind(this)
+    });
   },
 
   fetchContent(documentId) {
@@ -14,6 +24,6 @@ var DocumentActions = {
     DocumentStore.StoreContent(content);
   }
 
-}
+};
 
 export default DocumentActions;
